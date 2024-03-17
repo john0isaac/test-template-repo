@@ -3,7 +3,7 @@
 name: simple-flask-app-terraform
 
 services:
-  web:
+  python-app:
     project: .
     language: py
     host: appservice

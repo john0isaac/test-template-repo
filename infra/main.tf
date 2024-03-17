@@ -24,7 +24,7 @@ module "app_plan"  {
   source = "./core/host/appserviceplan"
   location  = var.location
   rg_name = azurecaf_name.rg_name.result
-  tags = { azd-env-name : var.environment_name, azd-service-name: "simple-flask-app-terraform"}
+  tags = { azd-env-name : var.environment_name, azd-service-name: "python-app"}
   resource_token = local.resource_token
   sku_name = "B1"
   os_type = "Linux"
@@ -34,7 +34,7 @@ module "app_service_python"  {
   source = "./core/host/appservice/appservicepython"
   location  = var.location
   rg_name = azurecaf_name.rg_name.result
-  tags = { azd-env-name : var.environment_name, azd-service-name: "simple-flask-app-terraform"}
+  tags = { azd-env-name : var.environment_name, azd-service-name: "python-app"}
   resource_token = local.resource_token
   appservice_plan_id = module.app_plan.APPSERVICE_PLAN_ID
   service_name = "wenbsvfjnsf"
