@@ -35,6 +35,12 @@ Steps for deployment:
 
 1. Install the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd). (If you open this repository in Codespaces or with the VS Code Dev Containers extension, that part will be done for you.)
 
+1. Login to Azure Developer CLI:
+
+    ```shell
+    azd auth login
+    ```
+
 1. Login to Azure using Azure CLI:
 
     ```shell
