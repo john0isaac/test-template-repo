@@ -20,26 +20,26 @@ resource "azurerm_resource_group" "rg" {
   tags = { azd-env-name : var.environment_name }
 }
 
-module "app_plan"  {
+module "app_plan" {
   source = "./core/host/appserviceplan"
-  location  = var.location
-  rg_name = azurecaf_name.rg_name.result
+  rg_name = azurerm_resource_group.rg.name
+  location = var.location
+  resource_token = "sdkbjsfvsrfb"
   tags = { azd-env-name : var.environment_name }
-  resource_token = local.resource_token
   sku_name = "B1"
   os_type = "Linux"
 }
 
-module "app_service_python"  {
+module "web_app" {
   source = "./core/host/appservice/appservicepython"
-  location  = var.location
-  rg_name = azurecaf_name.rg_name.result
-  tags = { azd-env-name : var.environment_name, azd-service-name: "python-app"}
-  resource_token = local.resource_token
+  rg_name = azurerm_resource_group.rg.name
+  location = var.location
+  resource_token = "jkwebguin"
+  tags = { azd-env-name : var.environment_name, azd-service-name: "python-app" }
   appservice_plan_id = module.app_plan.APPSERVICE_PLAN_ID
-  service_name = "wenbsvfjnsf"
-  app_settings = {}
   app_command_line = ""
+  app_settings = {}
+  service_name = "sfbkhdfs"
 }
 
 # Add resources to be provisioned below.
