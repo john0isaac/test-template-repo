@@ -55,7 +55,7 @@ Steps for deployment:
 
     It will prompt you to provide an `azd` environment name (like "acaflaskapp"), select a subscription from your Azure account, and select a location (like "eastus"). Then it will provision the resources in your account and deploy the latest code. If you get an error with deployment, changing the location can help, as there may be availability constraints for some of the resources.
 
-1. When `azd` has finished deploying, you'll see an endpoint URI in the command output. Visit that URI, and you should see the front page of the app! 🎉
+When `azd` has finished deploying, you'll see an endpoint URI in the command output. Visit that URI, and you should see the front page of the app! 🎉
 
 > [!NOTE]
 > When you've made any changes to the app code, you can just run:
