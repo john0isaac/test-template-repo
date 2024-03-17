@@ -24,7 +24,7 @@ module "app_plan" {
   source = "./core/host/appserviceplan"
   rg_name = azurerm_resource_group.rg.name
   location = var.location
-  resource_token = "sdkbjsfvsrfb"
+  resource_token = local.resource_token
   tags = { azd-env-name : var.environment_name }
   sku_name = "B1"
   os_type = "Linux"
@@ -34,7 +34,7 @@ module "web_app" {
   source = "./core/host/appservice/appservicepython"
   rg_name = azurerm_resource_group.rg.name
   location = var.location
-  resource_token = "jkwebguin"
+  resource_token = local.resource_token
   tags = { azd-env-name : var.environment_name, azd-service-name: "python-app" }
   appservice_plan_id = module.app_plan.APPSERVICE_PLAN_ID
   app_command_line = ""
