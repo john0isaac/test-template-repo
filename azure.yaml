@@ -1,9 +1,12 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
 
-name: simple-flask-container-app
+name: simple-flask-app-terraform
 
 services:
   web:
     project: .
     language: py
-    host: containerapp
+    host: appservice
+
+infra:
+  provider: terraform
