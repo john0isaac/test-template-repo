@@ -4,6 +4,9 @@ locals {
   resource_token               = substr(replace(lower(local.sha), "[^A-Za-z0-9_]", ""), 0, 13)
 }
 
+# ------------------------------------------------------------------------------------------------------
+# Deploy resource Group
+# ------------------------------------------------------------------------------------------------------
 resource "azurecaf_name" "rg_name" {
   name          = var.environment_name
   resource_type = "azurerm_resource_group"
@@ -11,41 +14,60 @@ resource "azurecaf_name" "rg_name" {
   clean_input   = true
 }
 
-# Deploy resource group
 resource "azurerm_resource_group" "rg" {
   name     = azurecaf_name.rg_name.result
   location = var.location
-  // Tag the resource group with the azd environment name
-  // This should also be applied to all resources created in this module
-  tags = { azd-env-name : var.environment_name }
+  tags = local.tags
 }
 
+# ------------------------------------------------------------------------------------------------------
+# Deploy log analytics
+# ------------------------------------------------------------------------------------------------------
+module "loganalytics" {
+  source         = "./modules/loganalytics"
+  location       = var.location
+  rg_name        = azurerm_resource_group.rg.name
+  tags           = azurerm_resource_group.rg.tags
+  resource_token = local.resource_token
+}
+
+# ------------------------------------------------------------------------------------------------------
+# Deploy application insights
+# ------------------------------------------------------------------------------------------------------
+module "applicationinsights" {
+  source           = "./modules/applicationinsights"
+  location         = var.location
+  rg_name          = azurerm_resource_group.rg.name
+  environment_name = var.environment_name
+  workspace_id     = module.loganalytics.LOGANALYTICS_WORKSPACE_ID
+  tags             = azurerm_resource_group.rg.tags
+  resource_token   = local.resource_token
+}
+
+# ------------------------------------------------------------------------------------------------------
+# Deploy app service plan
+# ------------------------------------------------------------------------------------------------------
 module "app_plan" {
   source = "./core/host/appserviceplan"
   rg_name = azurerm_resource_group.rg.name
   location = var.location
   resource_token = local.resource_token
-  tags = { azd-env-name : var.environment_name }
+  tags = azurerm_resource_group.rg.tags
   sku_name = "B1"
   os_type = "Linux"
 }
 
+# ------------------------------------------------------------------------------------------------------
+# Deploy app service web app
+# ------------------------------------------------------------------------------------------------------
 module "web_app" {
   source = "./core/host/appservice/appservicepython"
   rg_name = azurerm_resource_group.rg.name
   location = var.location
   resource_token = local.resource_token
-  tags = { azd-env-name : var.environment_name, azd-service-name: "python-app" }
+  tags = merge(local.tags, { azd-service-name : "python-app" })
   appservice_plan_id = module.app_plan.APPSERVICE_PLAN_ID
   app_command_line = ""
   app_settings = {}
-  service_name = "sfbkhdfs"
+  service_name = "web"
 }
-
-# Add resources to be provisioned below.
-# To learn more, https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-change
-# Note that a tag:
-#   azd-service-name: "<service name in azure.yaml>"
-# should be applied to targeted service host resources, such as:
-#  azurerm_linux_web_app, azurerm_windows_web_app for appservice
-#  azurerm_function_app for function
