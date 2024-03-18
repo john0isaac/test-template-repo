@@ -1,9 +1,30 @@
-This repository includes a simple Python Flask web site, made for demonstration purposes only.
+---
+page_type: sample
+languages:
+- azdeveloper
+- python
+- terraform
+- html
+products:
+- azure
+- azure-app-service
+- azure-monitor
+urlFragment: simple-flask-app-terraform
+name: Simple Flask (Python) Web App (Terraform) on Azure
+description: A simple Python Flask website, made for demonstration purposes only, and deployed to Azure App service. Uses Azure Developer CLI (azd) to build, deploy, and monitor.
+---
+<!-- YAML front-matter schema: https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main#supported-metadata-fields-for-readmemd -->
+
+# Simple Flask (Python) Web App (Terraform) on Azure
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/john0isaac/simple-flask-app-terraform?devcontainer_path=.devcontainer/devcontainer.json)
+
+This repository includes a simple Python Flask website, made for demonstration purposes only.
 The project can be developed locally with Flask and can be deployed to Azure App Service using the infrastructure files in `infra`. See below for more details.
 
-### Local development
+## Local development
 
-This project has Dev Container support, so you can open it in Github Codespaces or local VS Code with the Dev Containers extension.
+This project has Dev Container support, so you can open it in GitHub Codespaces or local VS Code with the Dev Containers extension.
 
 Steps for running the server: 
 
@@ -25,15 +46,22 @@ python3 -m flask --debug run --port 50505
 
 4. Try the index page, try '/hello?name=yourname', and try a non-existent path (to see 404 error).
 
-### Deployment
+### Prerequisites
+> This template will create infrastructure and deploy code to Azure. If you don't have an Azure Subscription, you can sign up for a [free account here](https://azure.microsoft.com/free/). Make sure you have a contributor role to the Azure subscription.
+
+
+The following prerequisites are required to use this application. Please ensure that you have them all installed locally.
+
+- [Azure Developer CLI](https://aka.ms/azd-install)
+- [Python (3.8+)](https://www.python.org/downloads/)
+- [Terraform CLI](https://aka.ms/azure-dev/terraform-install)
+    - Requires the [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli)
+
+## Deployment
 
 This repo is set up for deployment on Azure App Service using the configuration files in the `infra` folder.
 
 Steps for deployment:
-
-1. Sign up for a [free Azure account](https://azure.microsoft.com/free/) and create an Azure Subscription.
-
-1. Install the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd). (If you open this repository in Codespaces or with the VS Code Dev Containers extension, that part will be done for you.)
 
 1. Login to Azure Developer CLI:
 
