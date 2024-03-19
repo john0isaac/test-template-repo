@@ -24,7 +24,7 @@ resource "azurerm_resource_group" "rg" {
 # Deploy log analytics
 # ------------------------------------------------------------------------------------------------------
 module "loganalytics" {
-  source         = "./modules/loganalytics"
+  source         = "./core/monitor/loganalytics"
   location       = var.location
   rg_name        = azurerm_resource_group.rg.name
   tags           = azurerm_resource_group.rg.tags
@@ -35,7 +35,7 @@ module "loganalytics" {
 # Deploy application insights
 # ------------------------------------------------------------------------------------------------------
 module "applicationinsights" {
-  source           = "./modules/applicationinsights"
+  source           = "./core/monitor/applicationinsights"
   location         = var.location
   rg_name          = azurerm_resource_group.rg.name
   environment_name = var.environment_name
