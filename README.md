@@ -47,8 +47,8 @@ python3 -m flask --debug run --port 50505
 4. Try the index page, try '/hello?name=yourname', and try a non-existent path (to see 404 error).
 
 ### Prerequisites
-> This template will create infrastructure and deploy code to Azure. If you don't have an Azure Subscription, you can sign up for a [free account here](https://azure.microsoft.com/free/). Make sure you have a contributor role to the Azure subscription.
 
+> This template will create infrastructure and deploy code to Azure. If you don't have an Azure Subscription, you can sign up for a [free account here](https://azure.microsoft.com/free/). Make sure you have a contributor role to the Azure subscription.
 
 The following prerequisites are required to use this application. Please ensure that you have them all installed locally.
 
