@@ -101,7 +101,7 @@ This application utilizes the following Azure resources:
 
 Here's a high-level architecture diagram that illustrates these components. Notice that these are all contained within a single [resource group](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal), that will be created for you when you create the resources.
 
-!["Application architecture diagram"]()
+!["Application architecture diagram"](https://github.com/john0isaac/simple-flask-app-terraform/assets/64026625/daa0c38f-c82c-4e86-8974-9ccf8fadc638)
 
 > This template provisions resources to an Azure subscription that you will select upon provisioning them. Please refer to the [Pricing calculator for Microsoft Azure](https://azure.microsoft.com/pricing/calculator/) and, if needed, update the included Azure resource definitions found in `infra/main.tf` to suit your needs.
 
