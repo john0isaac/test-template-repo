@@ -91,3 +91,28 @@ When `azd` has finished deploying, you'll see an endpoint URI in the command out
 >    ```shell
 >    azd deploy
 >    ```
+
+### Application Architecture
+
+This application utilizes the following Azure resources:
+
+- [**Azure App service**](https://docs.microsoft.com/azure/app-service/) to host the Python Web App.
+- [**Azure Monitor**](https://docs.microsoft.com/azure/azure-monitor/) for monitoring and logging.
+
+Here's a high-level architecture diagram that illustrates these components. Notice that these are all contained within a single [resource group](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal), that will be created for you when you create the resources.
+
+!["Application architecture diagram"]()
+
+> This template provisions resources to an Azure subscription that you will select upon provisioning them. Please refer to the [Pricing calculator for Microsoft Azure](https://azure.microsoft.com/pricing/calculator/) and, if needed, update the included Azure resource definitions found in `infra/main.tf` to suit your needs.
+
+### Next Steps
+
+At this point, you have a complete application deployed on Azure. But there is much more that the Azure Developer CLI can do. These next steps will introduce you to additional commands that will make creating applications on Azure much easier. Using the Azure Developer CLI, you can set up your pipelines, monitor your application, and test and debug locally.
+
+- [`azd deploy`] to upload the changes to your application code to Azure.
+
+- [`azd monitor`](https://learn.microsoft.com/azure/developer/azure-developer-cli/monitor-your-app) - to monitor the application and quickly navigate to the various Application Insights dashboards (e.g. overview, live metrics, logs)
+
+- [Run and Debug Locally](https://learn.microsoft.com/azure/developer/azure-developer-cli/debug?pivots=ide-vs-code) - using Visual Studio Code and the Azure Developer CLI extension
+
+- [`azd down`](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-down) - to delete all the Azure resources created with this template.
