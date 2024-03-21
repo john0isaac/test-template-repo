@@ -30,21 +30,21 @@ Steps for running the server:
 
 1. (Optional) If you're unable to open the devcontainer, [create a Python virtual environment](https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments) and activate that.
 
-2. Install the requirements:
+1. Install the requirements:
 
-```shell
-python3 -m pip install -r requirements.txt
-```
+    ```shell
+    python3 -m pip install -r requirements.txt
+    ```
 
-3. Run the local server: (or use VS Code "Run" button and select "Run server")
+1. Run the local server:
 
-```shell
-python3 -m flask --debug run --port 50505
-```
+    ```shell
+    python3 -m flask --debug run --port 50505
+    ```
 
-3. Click 'http://127.0.0.1:50505' in the terminal, which should open the website in a new tab.
+1. Click 'http://127.0.0.1:50505' in the terminal, which should open the website in a new tab.
 
-4. Try the index page, try '/hello?name=yourname', and try a non-existent path (to see 404 error).
+1. Try the index page, try '/hello?name=yourname', and try a non-existent path (to see 404 error).
 
 ### Prerequisites
 
@@ -112,7 +112,5 @@ At this point, you have a complete application deployed on Azure. But there is m
 - `azd deploy` to upload the changes to your application code to Azure.
 
 - [`azd monitor`](https://learn.microsoft.com/azure/developer/azure-developer-cli/monitor-your-app) - to monitor the application and quickly navigate to the various Application Insights dashboards (e.g. overview, live metrics, logs)
-
-- [Run and Debug Locally](https://learn.microsoft.com/azure/developer/azure-developer-cli/debug?pivots=ide-vs-code) - using Visual Studio Code and the Azure Developer CLI extension
 
 - [`azd down`](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-down) - to delete all the Azure resources created with this template.
