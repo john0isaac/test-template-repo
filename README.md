@@ -113,7 +113,7 @@ Here's a high-level architecture diagram that illustrates these components. Noti
 
 ### Next Steps
 
-At this point, you have a complete application deployed on Azure. But there is much more that the Azure Developer CLI can do. These next steps will introduce you to additional commands that will make creating applications on Azure much easier. Using the Azure Developer CLI, you can set up your pipelines, monitor your application, and test and debug locally.
+At this point, you have a complete application deployed on Azure. But there is much more that the Azure Developer CLI can do. These next steps will introduce you to additional commands that will make creating applications on Azure much easier. Using the Azure Developer CLI, you can monitor your application, and test and debug locally.
 
 - `azd deploy` to upload the changes to your application code to Azure.
 
