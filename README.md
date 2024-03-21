@@ -63,6 +63,12 @@ This repo is set up for deployment on Azure App Service using the configuration 
 
 Steps for deployment:
 
+1. Run the following command to download the project code:
+
+    ```shell
+    azd init -t john0isaac/simple-flask-app-terraform
+    ```
+
 1. Login to Azure Developer CLI:
 
     ```shell
@@ -81,7 +87,7 @@ Steps for deployment:
     azd up
     ```
 
-    It will prompt you to provide an `azd` environment name (like "acaflaskapp"), select a subscription from your Azure account, and select a location (like "eastus"). Then it will provision the resources in your account and deploy the latest code. If you get an error with deployment, changing the location can help, as there may be availability constraints for some of the resources.
+    It will prompt you to provide an `azd` environment name (like "flaskapp"), select a subscription from your Azure account, and select a location (like "eastus"). Then it will provision the resources in your account and deploy the latest code. If you get an error with deployment, changing the location can help, as there may be availability constraints for some of the resources.
 
 When `azd` has finished deploying, you'll see an endpoint URI in the command output. Visit that URI, and you should see the front page of the app! 🎉
 
