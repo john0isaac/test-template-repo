@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     azurerm = {
-      version = "~>3.47.0"
+      version = "~>4.4.0"
       source  = "hashicorp/azurerm"
     }
     azurecaf = {
@@ -37,6 +37,7 @@ resource "azurerm_linux_web_app" "web" {
       python_version = var.python_version
     }
     health_check_path = var.health_check_path
+    health_check_eviction_time_in_min = var.health_check_eviction_time_in_min
   }
 
   app_settings = var.app_settings
